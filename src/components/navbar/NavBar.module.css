@@ -1,6 +1,5 @@
 /* components/NavBar.module.css */
 
-/* components/NavBar.module.css */
 
 .navbar {
     position: fixed;
@@ -10,13 +9,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0.8rem auto; /* Auto margin for automatic horizontal centering */
+    margin-top: 0.8rem; /* Auto margin for automatic horizontal centering */
     padding: 0.8rem 2rem;
     background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
-    border-radius: 30px;
     width: calc(100% - 2rem); /* Adjust width to account for margin */
 }
 
@@ -37,7 +35,7 @@
 }
 .link:hover {
     color: rgb(30, 57, 114); /* Ensure text is black */
-    border: 1px solid rgb(90, 117, 174); /* Solid border on hover, change the color as needed */
+    border: 1px solid rgb(30, 57, 114); /* Solid border on hover, change the color as needed */
     border-radius: 20px; /* Rounded corners */
 }
 
@@ -45,4 +43,10 @@
     margin-left: 30px;
     display: flex;
     align-items: center; /* Ensures vertical centering */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
+
+}
+
+.icons a:hover {
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
 }

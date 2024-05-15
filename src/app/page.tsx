@@ -2,34 +2,21 @@
 
 import type { NextPage } from 'next';
 import NavBar from "@/components/navbar/NavBar";
-import ParticlesComponent from "@/components/Background";
+
+import HomePage from "@/components/home/HomePage";
+import ParticlesComponent from "@/components/Particles";
+import AnimatedBackground from "@/components/background/Background";
 
 const Home: NextPage = () => {
   return (
       <div>
-            <NavBar />
-            <main>
-                <h1>Welcome to My Website</h1>
-                <p>This is the front page of my personal website.</p>
-                <h1>Welcome to My Website</h1>
+          <ParticlesComponent id={'hi'}></ParticlesComponent>
+          <AnimatedBackground />
 
-                <h1>Welcome to My Website</h1>
-
-                <h1>Welcome to My Website</h1>
-                <ParticlesComponent id={'hi'}></ParticlesComponent>
-
-                <h1>Welcome to My Website</h1>
-                <h1>Welcome to My Website</h1>
-                <h1>Welcome to My Website</h1>
-                <h1>Welcome to My Website</h1>
-                <h1>Welcome to My Website</h1>
-                <h1>Welcome to My Website</h1>
-                <h1>Welcome to My Website</h1>
-                <h1>Welcome to My Website</h1>
-                <h1>Welcome to My Website</h1>
-
-
-            </main>
+          <NavBar />
+          <main>
+              <HomePage></HomePage>
+          </main>
       </div>
   );
 };

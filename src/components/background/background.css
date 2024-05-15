@@ -1,0 +1,65 @@
+:root {
+    --secondary-glow: conic-gradient(
+            from 10deg at 50% 50%,
+            transparent 0deg,
+            #eb7494 40deg,
+            #ae77b2 85deg,
+            #97b5da 120deg,
+            #0099ca 160deg,
+            transparent 360deg
+    );
+
+    --third-glow: conic-gradient(
+            from 90deg at 50% 50%,
+            transparent 0deg,
+            #ff8b7e 40deg,
+            #e24e6b 120deg,
+            #7ed2da 160deg,
+            #8bdce0 250deg,
+            transparent 360deg
+    );
+}
+
+body::before, body::after {
+    filter: blur(20px);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vw;
+    border-radius: 100%;
+    z-index: -2;
+    background-size: cover;
+    mask-image: radial-gradient(circle, rgb(240, 240, 245) 30%, transparent 70%);
+}
+
+body::before {
+    animation: animateBefore 60s infinite;
+    background: var(--third-glow);
+}
+
+body::after {
+    animation: animateAfter 60s infinite;
+    background: var(--secondary-glow);
+}
+
+@keyframes animateBefore {
+    0%, 100% { transform: translate(-350px, -500px) scale(1) rotate(0deg); }
+    10% { transform: translate(-300px, -200px) scale(1.1) rotate(72deg); }
+    35% { transform: translate(-400px, 0px) scale(0.9) rotate(144deg); }
+    60% { transform: translate(-100px, -300px) scale(1.2) rotate(216deg); }
+    90% { transform: translate(-290px, -400px) scale(1) rotate(288deg); }
+}
+
+@keyframes animateAfter {
+    0%, 100% { transform: translate(500px, -500px) scale(1) rotate(0deg); }
+    20% { transform: translate(600px, -400px) scale(1.1) rotate(-72deg); }
+    40% { transform: translate(500px, -200px) scale(0.9) rotate(-144deg); }
+    60% { transform: translate(440px, 0px) scale(1.2) rotate(-216deg); }
+    80% { transform: translate(250px, -350px) scale(1) rotate(-288deg); }
+}
+
+

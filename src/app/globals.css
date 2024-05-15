@@ -5,8 +5,9 @@ html, body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: transparent;
-
+  overflow: hidden; /* Hide anything that overflows the body’s box */
 }
+
 
 a {
   color: inherit;
