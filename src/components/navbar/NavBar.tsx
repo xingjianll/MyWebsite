@@ -37,7 +37,7 @@ const NavBar: React.FC = () => {
                 <Link href="/" passHref className={styles.link}>
                     HOME
                 </Link>
-                <Link href="/blogs" passHref className={styles.link}>
+                <Link href="/blog" passHref className={styles.link}>
                     BLOGS
                 </Link>
             </div>

@@ -5,9 +5,9 @@ html, body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: transparent;
-  overflow: hidden; /* Hide anything that overflows the body’s box */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-y: auto;   /* Allow vertical overflow */
 }
-
 
 a {
   color: inherit;
@@ -18,5 +18,5 @@ a {
   box-sizing: border-box;
 }
 
-main{
+main {
 }

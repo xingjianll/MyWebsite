@@ -1,8 +1,11 @@
+/* homepage.module.css */
+
 .container {
     margin-top: 100px;
     text-align: left;
     padding: 50px; /* Adds padding around the content */
     color: #333;
+    height: auto;
 }
 
 .header h1 {
@@ -11,7 +14,6 @@
     font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
     font-weight: 200;
     letter-spacing: -0.025em;
-
 
     font-size: 144px; /* Significantly larger font size for the name */
     margin: 0 0 30px 10%; /* Positioned a bit to the left with a margin */
@@ -42,12 +44,13 @@
     margin-left: 10%; /* Align text to the shifted header */
 }
 
-/* Add these styles to your existing CSS module */
 .scrollDownArrow {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    position: absolute; /* Positioning it absolutely within its containing element */
+    bottom: 20px; /* 20px from the bottom of the viewport */
+    left: 50%; /* Center horizontally within its containing element */
+    transform: translateX(-50%); /* Offset it to center properly */
     font-size: 50px; /* Size of the arrow */
     color: rgb(90, 117, 174); /* Color of the arrow */
     animation: bounce 2s infinite; /* Animation to attract attention */
@@ -57,12 +60,52 @@
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
+        transform: translateY(0);
     }
     40% {
-        transform: translateX(-50%) translateY(-20px);
+        transform: translateY(-20px);
     }
     60% {
-        transform: translateX(-50%) translateY(-10px);
+        transform: translateY(-10px);
     }
+}
+
+.experience {
+    position: absolute;
+    top: 100vh; /* Positions it just below the viewport */
+    left: 10%; /* Adds left padding */
+    right: 10%; /* Adds right padding */
+    background-color: transparent;
+}
+
+.experience h2 {
+    font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: rgb(30, 57, 114); /* Same color as the title */
+}
+
+.experience h3 {
+    font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: rgb(30, 57, 114); /* Same color as the title */
+}
+
+.experience p, .experience ul {
+    font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.experience ul {
+    list-style-type: disc;
+    padding-left: 20px;
 }
