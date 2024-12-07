@@ -7,6 +7,9 @@ import inori1 from '../../../public/inori_clear.png'
 import inori2 from '../../../public/inori_figure.png'
 
 import ParticlesComponent from "@/components/Particles";
+import {Button} from "@mantine/core";
+import Link from "next/link";
+
 const HomePage: React.FC = () => {
     const [_, setScrollY] = useState(0);
 
@@ -28,6 +31,9 @@ const HomePage: React.FC = () => {
             behavior: 'smooth',
         });
     };
+
+    const defaultContent =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
     return (
         <div className={styles.container}>
@@ -61,6 +67,9 @@ const HomePage: React.FC = () => {
                 <div className={styles.text}>
                     <a>Blog</a>
                 </div>
+                <Button component={Link} href="/hello">
+                    Next link button
+                </Button>
             </div>
         </div>
     );

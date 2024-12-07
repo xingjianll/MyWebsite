@@ -7,9 +7,7 @@ import NavBar from "@/components/navbar/NavBar";
 const BlogPage: React.FC = () => {
     return (
         <div>
-            <ParticlesComponent id={'hi'}></ParticlesComponent>
             <AnimatedBackground />
-
             <NavBar />
             <main>
                 <BlogBody></BlogBody>
