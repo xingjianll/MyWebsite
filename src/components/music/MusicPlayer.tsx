@@ -37,11 +37,6 @@ const MusicPlayer: React.FC = () => {
         }
     };
 
-    const toggleShuffle = () => {
-        setIsShuffled(!isShuffled);
-        console.log('Shuffle toggled:', !isShuffled);
-    };
-
     const playRandomSong = () => {
         let nextSongIndex;
         do {
@@ -62,9 +57,22 @@ const MusicPlayer: React.FC = () => {
         dragStartRef.current = { x: e.clientX - position.x, y: e.clientY - position.y };
     };
 
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setIsDragging(true);
+        const touch = e.touches[0];
+        dragStartRef.current = { x: touch.clientX - position.x, y: touch.clientY - position.y };
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
         if (isDragging) {
             setPosition({ x: e.clientX - dragStartRef.current.x, y: e.clientY - dragStartRef.current.y });
+        }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+        if (isDragging) {
+            const touch = e.touches[0];
+            setPosition({ x: touch.clientX - dragStartRef.current.x, y: touch.clientY - dragStartRef.current.y });
         }
     };
 
@@ -72,18 +80,28 @@ const MusicPlayer: React.FC = () => {
         setIsDragging(false);
     };
 
+    const handleTouchEnd = () => {
+        setIsDragging(false);
+    };
+
     useEffect(() => {
         if (isDragging) {
             document.addEventListener('mousemove', handleMouseMove);
             document.addEventListener('mouseup', handleMouseUp);
+            document.addEventListener('touchmove', handleTouchMove);
+            document.addEventListener('touchend', handleTouchEnd);
         } else {
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleTouchEnd);
         }
 
         return () => {
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleTouchEnd);
         };
     }, [isDragging]);
 
@@ -94,6 +112,7 @@ const MusicPlayer: React.FC = () => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
         >
             <div className={styles.details}>
                 <img
