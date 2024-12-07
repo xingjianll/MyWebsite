@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 .musicPlayer {
     position: fixed;
-    bottom: 40px;
-    right: 80px;
     width: 300px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(170, 170, 170, 0.25);
     color: black;
     border-radius: 16px;
     backdrop-filter: blur(2px);
@@ -12,13 +12,25 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    cursor: pointer;
+    cursor: grab;
     transition: background-color 0.5s ease;
     z-index: 9;
 }
 
+.musicPlayer:active {
+    cursor: grabbing;
+}
+
 .musicPlayer.hovered {
     background-color: rgba(255, 255, 255, 1);
+}
+
+.musicPlayer:hover .artistName {
+    color: gray;
+}
+
+.musicPlayer:hover .playButton {
+    border: 1px solid white;
 }
 
 .details {
@@ -33,37 +45,118 @@
     height: 50px;
     border-radius: 60px;
     object-fit: cover;
+    transition: transform 0.3s linear;
+    animation: rotate 10s linear infinite;
+    animation-play-state: paused;
+}
+
+.albumArt.playing {
+    animation-play-state: running;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.trackTitleContainer {
+    overflow: hidden;
+    width: 120px;
+    white-space: nowrap;
+    position: relative;
 }
 
 .trackTitle {
-    margin: 0;
+    display: inline-block;
     font-size: 14px;
     font-weight: bold;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    transition: color 0.3s;
+    animation-play-state: paused;
+    transform: translateX(0);
+}
+
+.trackTitle.playing {
+    animation: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    50% {
+        transform: translateX(-170%);
+    }
+    50.001% {
+        transform: translateX(170%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 .artistName {
     margin: 0;
     font-size: 12px;
-    color: #aaa;
+    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: color 0.3s ease;
+
 }
 
 .playButton {
-    background: #0070f3;
+    background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 8px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 14px;
-    transition: background 0.3s ease;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    transition: background 0.3s ease, transform 0.2s;
+    mix-blend-mode: difference;
 }
 
 .playButton:hover {
-    background: #005bb5;
+    transform: scale(1.1);
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+.shuffleButton {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    mix-blend-mode: difference;
+}
+
+.shuffleButton:hover {
+    transform: scale(1.1);
+}
+
+.activeShuffle {
+    background-color: #0070f3; /* Highlight when shuffle is active */
+    color: #fff;
 }
