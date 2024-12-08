@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from './background.module.css';
+import styles from './Background.module.css';
 import inori1 from '../../../public/inori_clear.png'
 import inori2 from '../../../public/inori_figure.png'
 

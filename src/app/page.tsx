@@ -1,9 +1,8 @@
 // pages/index.tsx
 
 import type { NextPage } from 'next';
-import Background from "@/components/background/background";
 import NavBar from "@/components/navbar/NavBar";
-import styles from './home.module.css';
+import Background from "@/components/background/Background";
 import React from "react";
 
 const Home: NextPage = () => {
