@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       <main>
           <NavBar></NavBar>
           <Background></Background>
-          <p>Hi I'm Kevin, a fourth year computer science student at the University of Toronto.</p>
+          <p>Hi I&apos;m Kevin, a fourth year computer science student at the University of Toronto.</p>
       </main>
   );
 };
