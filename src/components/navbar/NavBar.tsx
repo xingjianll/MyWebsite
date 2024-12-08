@@ -23,16 +23,16 @@ const NavBar: React.FC = () => {
         };
     }, []);
 
-    const navbarStyle = {
-        backdropFilter: `blur(${Math.min(2 + Math.max(scrollY, 0)*8 / 150, 10)}px)`,
-        marginTop: `${Math.max(0.8 - Math.max(scrollY, 0)*0.8 / 150, 0)}rem`,
-        width: `calc(100% - ${Math.max(2 - Math.max(scrollY, 0)*2 / 150, 0)}rem)`, // Adjust width to 100% when scrolled more than 50px
-        borderRadius: `${Math.max(50 - Math.max(scrollY, 0)*50 / 150, 0)}px`,
-        backgroundColor: `rgba(255, 255, 255, ${Math.min(0.5 + Math.max(scrollY, 0)*0.3 / 150, 0.8)})`,
-    };
+    // const navbarStyle = {
+    //     backdropFilter: `blur(${Math.min(2 + Math.max(scrollY, 0)*8 / 150, 10)}px)`,
+    //     marginTop: `${Math.max(0.8 - Math.max(scrollY, 0)*0.8 / 150, 0)}rem`,
+    //     width: `calc(100% - ${Math.max(2 - Math.max(scrollY, 0)*2 / 150, 0)}rem)`, // Adjust width to 100% when scrolled more than 50px
+    //     borderRadius: `${Math.max(50 - Math.max(scrollY, 0)*50 / 150, 0)}px`,
+    //     backgroundColor: `rgba(255, 255, 255, ${Math.min(0.5 + Math.max(scrollY, 0)*0.3 / 150, 0.8)})`,
+    // };
 
     return (
-        <nav className={styles.navbar} style={navbarStyle}>
+        <nav className={styles.navbar}>
             <div className={styles.links}>
                 <Link href="/" passHref className={styles.link}>
                     HOME

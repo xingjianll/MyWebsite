@@ -4,18 +4,18 @@
 .navbar {
     position: fixed;
     top: 0;
-    left: 50%; /* Center the navbar horizontally */
-    transform: translateX(-50%); /* Offset by half of the navbar's width to center it */
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.8rem; /* Auto margin for automatic horizontal centering */
     padding: 0.8rem 2rem;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(10px);
+    color: black;
     z-index: 1000;
-    width: calc(100% - 2rem); /* Adjust width to account for margin */
+    width: 100vw;
 }
 
 
@@ -26,24 +26,23 @@
 
 .link {
     margin-right: 30px;
-    color: rgb(90, 117, 174); /* Ensure text is black */
+    color: black;
     text-decoration: none;
     padding: 0.5rem;
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
-    border: 1px solid transparent; /* Transparent border to maintain layout consistency */
-    border-radius: 10px; /* Rounded corners */
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    border-radius: 10px;
 }
 .link:hover {
-    color: rgb(30, 57, 114); /* Ensure text is black */
-    border: 1px solid rgb(30, 57, 114); /* Solid border on hover, change the color as needed */
-    border-radius: 20px; /* Rounded corners */
+    border: 1px solid black;
+    border-radius: 20px;
 }
 
 .icons a {
     margin-left: 30px;
     display: flex;
-    align-items: center; /* Ensures vertical centering */
-    transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
+    align-items: center;
+    transition: box-shadow 0.3s ease;
 
 }
 
