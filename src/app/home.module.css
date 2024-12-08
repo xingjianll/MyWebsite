@@ -1,3 +1,11 @@
+.mainContainer {
+    position: relative;
+    height: 100vh;
+    /* Initially controlled by JS: overflow-y: hidden; */
+    display: flex;
+    flex-direction: column;
+}
+
 .textContainer {
     position: absolute;
     font-size: 2ch;
@@ -5,4 +13,44 @@
     left: 5vw;
     z-index: 10;
     max-width: 40%;
+}
+
+.background2 {
+    position: relative;
+    margin-top: 100vh;
+    z-index: 5;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+}
+
+.newSection {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:  0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2px 64px;
+    margin-top: 0;
+    width: 70%;
+    z-index: 9;
+}
+
+.newSection h2 {
+    margin: 4px;
+    font-size: 4rem;
+    z-index: 9;
+}
+
+.newSection p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.longContent {
+    height: 2000px; /* Just to demonstrate scrolling after pull */
+    background: linear-gradient(to bottom, #fff, #ccc);
 }

@@ -24,7 +24,11 @@ const NavBar: React.FC = () => {
     }, []);
 
     const navbarStyle = {
-        backdropFilter: `blur(${Math.min(Math.max(scrollY, 0)*8 / 150, 10)}px)`
+        backdropFilter: `blur(${Math.min(2 + Math.max(scrollY, 0)*8 / 150, 10)}px)`,
+        marginTop: `${Math.max(0.8 - Math.max(scrollY, 0)*0.8 / 150, 0)}rem`,
+        width: `calc(100% - ${Math.max(2 - Math.max(scrollY, 0)*2 / 150, 0)}rem)`, // Adjust width to 100% when scrolled more than 50px
+        borderRadius: `${Math.max(50 - Math.max(scrollY, 0)*50 / 150, 0)}px`,
+        backgroundColor: `rgba(255, 255, 255, ${Math.min(0.5 + Math.max(scrollY, 0)*0.3 / 150, 0.8)})`,
     };
 
     return (
@@ -36,11 +40,11 @@ const NavBar: React.FC = () => {
                 <Link href="/blog" passHref className={styles.link}>
                     Blogs
                 </Link>
-                <Link href="https://www.linkedin.com/in/xingjian-liu-b87a841a4/" passHref className={styles.link}>
-                    Linkedin
-                </Link >
                 <Link href="https://github.com/xingjianll" passHref className={styles.link}>
                     Github
+                </Link>
+                <Link href="https://www.linkedin.com/in/xingjian-liu-b87a841a4/" passHref className={styles.link}>
+                    Linkedin
                 </Link>
             </div>
         </nav>
