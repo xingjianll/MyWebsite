@@ -10,12 +10,13 @@ const MusicPlayer: React.FC = () => {
         { title: 'The Everlasting Guilty Crown', artist: 'Egoist', src: '/the-everlasting-guilty-crown.flac' },
     ];
 
+    const [display, setDisplay] = useState('none');  // Hide player during page initialization
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = useState(false);
-    const [isShuffled, setIsShuffled] = useState(false);
+    const [isShuffled, _] = useState(false);
     const dragStartRef = useRef({ x: 0, y: 0 });
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -24,6 +25,7 @@ const MusicPlayer: React.FC = () => {
         const initialX = window.innerWidth - 380;
         const initialY = window.innerHeight - 100;
         setPosition({ x: initialX, y: initialY });
+        setDisplay('flex');
     }, []);
 
     const togglePlay = () => {
@@ -108,7 +110,7 @@ const MusicPlayer: React.FC = () => {
     return (
         <div
             className={`${styles.musicPlayer} ${isHovered ? styles.hovered : ''}`}
-            style={{ left: `${position.x}px`, top: `${position.y}px`, position: 'absolute' }}
+            style={{ left: `${position.x}px`, top: `${position.y}px`, position: 'absolute', display: `${display}` }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onMouseDown={handleMouseDown}
