@@ -18,6 +18,7 @@
 
 .musicPlayer:active {
     cursor: grabbing;
+    user-select: none;
 }
 
 .musicPlayer.hovered {
@@ -28,7 +29,7 @@
     color: gray;
 }
 
-.musicPlayer:hover .playButton {
+.musicPlayer:hover .playButton, .musicPlayer:hover .shuffleButton {
     border: 1px solid white;
 }
 
@@ -110,35 +111,15 @@
 
 }
 
-.playButton {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    border: none;
-    padding: 8px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 18px;
-    text-align: center;
-    width: 40px;
-    height: 40px;
-    transition: background 0.3s ease, transform 0.2s;
-    mix-blend-mode: difference;
-}
-
-.playButton:hover {
-    transform: scale(1.1);
-}
-
 .controls {
     display: flex;
     gap: 10px;
 }
 
-.shuffleButton {
+.playButton, .shuffleButton {
     background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
-    border: none;
+    border: 0 solid black;
     padding: 8px;
     border-radius: 50%;
     cursor: pointer;
@@ -147,15 +128,13 @@
     text-align: center;
     width: 40px;
     height: 40px;
-    transition: background-color 0.3s ease, transform 0.2s;
+    transition: border-width 0.2s, border-color 0.2s, transform 0.2s;
     mix-blend-mode: difference;
 }
 
-.shuffleButton:hover {
+.playButton:hover, .shuffleButton:hover {
     transform: scale(1.1);
 }
 
 .activeShuffle {
-    background-color: #0070f3; /* Highlight when shuffle is active */
-    color: #fff;
 }
