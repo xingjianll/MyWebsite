@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import {ColorSchemeScript, MantineProvider} from "@mantine/core";
 import '@mantine/core/styles.css';
+import MusicPlayer from "@/components/music/MusicPlayer";
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +26,7 @@ export default function RootLayout({
           <body className={inter.className}>
           <MantineProvider>
               {children}
+              <MusicPlayer/>
           </MantineProvider>
           </body>
       </html>

@@ -1,0 +1,14 @@
+.textContainer {
+    position: relative;
+    top: 20vh;
+    left: 5vw;
+    z-index: 4;
+    max-width: 40%;
+}
+
+.text {
+    font-size: 3ch;
+    color: black;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(10px);
+}

@@ -1,20 +1,59 @@
-'use client'
+'use client';
 
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import styles from './background.module.css';
+import inori1 from '../../../public/inori_clear.png'
+import inori2 from '../../../public/inori_figure.png'
 
-import { useEffect } from 'react';
-import './background.css'; // Make sure to create this CSS file
+import ParticlesComponent from "@/components/Particles";
 
-const AnimatedBackground: React.FC = () => {
+const Background: React.FC = () => {
+    const [_, setScrollY] = useState(0);
+
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            document.body.style.setProperty('--start-angle-before', `${Math.random() * 360}deg`);
-            document.body.style.setProperty('--start-angle-after', `${Math.random() * 360}deg`);
-        }, 5000); // Changes the gradient angle every 5 seconds
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
 
-        return () => clearInterval(intervalId);
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
-    return <div className="animated-background"></div>;
+    const scrollToExperience = () => {
+        window.scrollTo({
+            top: window.innerHeight * 0.9,
+            behavior: 'smooth',
+        });
+    };
+
+    const defaultContent =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+
+    return (
+        <div className={styles.container}>
+            <ParticlesComponent id={'hi'} opacity={0.3} z={2} b_opacity={0} amount={25}></ParticlesComponent>
+            <ParticlesComponent id={'hi2'} opacity={1} z={4} b_opacity={0} amount={10}></ParticlesComponent>
+
+            <div className={styles.background}>
+                <Image
+                    src={inori1}
+                    alt="character"
+                    style={{width: 'auto', height: '100vh'}}
+                />
+            </div>
+            <div className={styles.foreground}>
+                <Image
+                    src={inori2}
+                    alt="character"
+                    style={{width: 'auto', height: '100vh'}}
+                />
+            </div>
+        </div>
+    );
 };
 
-export default AnimatedBackground;
+export default Background;
