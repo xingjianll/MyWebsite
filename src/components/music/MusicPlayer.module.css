@@ -3,17 +3,16 @@
 .musicPlayer {
     position: fixed;
     width: 300px;
-    background-color: rgba(170, 170, 170, 0.25);
-    color: black;
+    height: 80px;
     border-radius: 16px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
     overflow: hidden;
-    align-items: center;
     padding: 10px;
     cursor: grab;
-    transition: background-color 0.5s ease;
     z-index: 10;
+    transition: background-color 0.5s ease, border 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .musicPlayer:active {
@@ -21,23 +20,81 @@
     user-select: none;
 }
 
+.initialView {
+    background: #fff;
+}
+
+.startClicked.initialView .startText {
+    opacity: 0;
+}
+
+.musicPlayer:not(.initialView) {
+    background-color: rgba(170, 170, 170, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: none;
+}
+
 .musicPlayer.hovered {
     background-color: rgba(255, 255, 255, 1);
 }
 
-.musicPlayer:hover .artistName {
+.musicPlayer.hovered .artistName {
     color: gray;
 }
 
-.musicPlayer:hover .playButton, .musicPlayer:hover .shuffleButton {
+.musicPlayer.hovered .playButton,
+.musicPlayer.hovered .shuffleButton {
     border: 1px solid white;
 }
 
+.startText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: #000;
+    transition: opacity 0.8s ease;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
 .details {
+    width: 150px;
     display: flex;
     align-items: center;
     gap: 10px;
-    flex: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease 0.5s;
+}
+
+.musicPlayer:not(.initialView) .details {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.controls {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.shuffleButton {
+    opacity: 0;
+    transition: opacity 0.8s ease 0.8s;
+}
+
+.musicPlayer:not(.initialView) .shuffleButton {
+    opacity: 1;
 }
 
 .albumArt {
@@ -52,16 +109,11 @@
 
 .albumArt.playing {
     animation-play-state: running;
-    animation: rotate 10s linear infinite;
 }
 
 @keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .trackTitleContainer {
@@ -78,7 +130,6 @@
     white-space: nowrap;
     transition: color 0.3s;
     animation-play-state: paused;
-    transform: translateX(0);
 }
 
 .trackTitle.playing {
@@ -86,18 +137,10 @@
 }
 
 @keyframes marquee {
-    0% {
-        transform: translateX(0%);
-    }
-    50% {
-        transform: translateX(-170%);
-    }
-    50.001% {
-        transform: translateX(170%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
+    0% { transform: translateX(0%); }
+    50% { transform: translateX(-170%); }
+    50.001% { transform: translateX(170%); }
+    100% { transform: translateX(0%); }
 }
 
 .artistName {
@@ -108,33 +151,48 @@
     overflow: hidden;
     text-overflow: ellipsis;
     transition: color 0.3s ease;
-
 }
 
-.controls {
-    display: flex;
-    gap: 10px;
+.playButton {
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding: 0;
+    transition: color 0.3s, transform 0.3s;
 }
 
-.playButton, .shuffleButton {
+.musicPlayer:not(.initialView) .playButton {
     background-color: rgba(0, 0, 0, 0.4);
     color: #fff;
-    border: 0 solid black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    mix-blend-mode: difference;
+}
+
+.shuffleButton {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: 0;
     padding: 8px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 18px;
-    line-height: 18px;
-    text-align: center;
     width: 40px;
     height: 40px;
-    transition: border-width 0.2s, border-color 0.2s, transform 0.2s;
+    line-height: 18px;
+    text-align: center;
+    transition: transform 0.2s;
     mix-blend-mode: difference;
 }
 
-.playButton:hover, .shuffleButton:hover {
+.shuffleButton:hover {
     transform: scale(1.1);
-}
-
-.activeShuffle {
 }

@@ -10,15 +10,18 @@ const MusicPlayer: React.FC = () => {
         { title: 'The Everlasting Guilty Crown', artist: 'Egoist', src: '/the-everlasting-guilty-crown.flac' },
     ];
 
-    const [display, setDisplay] = useState('none');  // Hide player during page initialization
+    const [display, setDisplay] = useState('none');
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
+    const [isHovered, setIsHovered] = useState(true);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = useState(false);
-    const [isShuffled, _] = useState(false);
-    const dragStartRef = useRef({ x: 0, y: 0 });
+    const [isShuffled] = useState(false);
 
+    const [initialView, setInitialView] = useState(true);
+    const [startClicked, setStartClicked] = useState(false);
+
+    const dragStartRef = useRef({ x: 0, y: 0 });
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
@@ -43,14 +46,12 @@ const MusicPlayer: React.FC = () => {
         let nextSongIndex;
         do {
             nextSongIndex = Math.floor(Math.random() * songs.length);
-        } while (nextSongIndex === currentSongIndex); // Ensure the new song is different
-        setCurrentSongIndex(nextSongIndex);
+        } while (nextSongIndex === currentSongIndex);
 
-        if (audioRef.current) {
-            audioRef.current.src = songs[nextSongIndex].src; // Update the song source
-            if (isPlaying) {
-                audioRef.current.play();
-            }
+        setCurrentSongIndex(nextSongIndex);
+        if (audioRef.current && isPlaying) {
+            audioRef.current.src = songs[nextSongIndex].src;
+            audioRef.current.play();
         }
     };
 
@@ -107,42 +108,77 @@ const MusicPlayer: React.FC = () => {
         };
     }, [isDragging]);
 
+    const handleInitialPlayClick = () => {
+        if (audioRef.current) {
+            audioRef.current.play();
+            setIsPlaying(true);
+        }
+        setStartClicked(true);
+        setTimeout(() => {
+            setInitialView(false);
+        }, 800);
+    };
+
     return (
         <div
-            className={`${styles.musicPlayer} ${isHovered ? styles.hovered : ''}`}
-            style={{ left: `${position.x}px`, top: `${position.y}px`, position: 'absolute', display: `${display}` }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            className={`
+            ${styles.musicPlayer} 
+            ${initialView ? styles.initialView : ''} 
+            ${(!initialView && isHovered) ? styles.hovered : ''} 
+            ${startClicked ? styles.startClicked : ''
+            }`
+        }
+            style={{
+                left: `${position.x}px`,
+                top: `${position.y}px`,
+                position: 'absolute',
+                display: `${display}`
+        }}
+            onMouseEnter={() => { if (!initialView) setIsHovered(true); }}
+            onMouseLeave={() => { if (!initialView) setIsHovered(false); }}
             onMouseDown={handleMouseDown}
             onTouchStart={handleTouchStart}
         >
-            <div className={styles.details}>
-                <img
-                    src="/album.jpg"
-                    alt="Album Art"
-                    className={`${styles.albumArt} ${isPlaying ? styles.playing : ''}`}
-                />
-                <div>
-                    <div className={styles.trackTitleContainer}>
-                        <span className={`${styles.trackTitle} ${isPlaying ? styles.playing : ''}`}>
-                            {songs[currentSongIndex].title}
-                        </span>
+            <audio ref={audioRef} src={songs[currentSongIndex].src} />
+
+            {/* Absolutely positioned start text in center of player */}
+            {initialView && <span className={styles.startText}>start</span>}
+
+            <div className={styles.content}>
+                <div className={styles.details}>
+                    <img
+                        src="/album.jpg"
+                        alt="Album Art"
+                        className={`${styles.albumArt} ${isPlaying ? styles.playing : ''}`}
+                    />
+                    <div>
+                        <div className={styles.trackTitleContainer}>
+                            <span className={`${styles.trackTitle} ${isPlaying ? styles.playing : ''}`}>
+                                {songs[currentSongIndex].title}
+                            </span>
+                        </div>
+                        <p className={styles.artistName}>{songs[currentSongIndex].artist}</p>
                     </div>
-                    <p className={styles.artistName}>{songs[currentSongIndex].artist}</p>
+                </div>
+
+                <div className={styles.controls}>
+                    {!initialView && (
+                        <button
+                            className={`${styles.shuffleButton} ${isShuffled ? styles.activeShuffle : ''}`}
+                            onClick={playRandomSong}
+                        >
+                            🔀
+                        </button>
+                    )}
+
+                    <button
+                        className={styles.playButton}
+                        onClick={initialView ? handleInitialPlayClick : togglePlay}
+                    >
+                        {isPlaying ? '||' : '▶'}
+                    </button>
                 </div>
             </div>
-            <div className={styles.controls}>
-                <button className={styles.playButton} onClick={togglePlay}>
-                    {isPlaying ? '||' : '▶'}
-                </button>
-                <button
-                    className={`${styles.shuffleButton} ${isShuffled ? styles.activeShuffle : ''}`}
-                    onClick={playRandomSong}
-                >
-                    🔀
-                </button>
-            </div>
-            <audio ref={audioRef} src={songs[currentSongIndex].src} />
         </div>
     );
 };

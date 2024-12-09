@@ -42,7 +42,7 @@ const Home: NextPage = () => {
 
     return (
         <main ref={mainRef} className={styles.mainContainer} onWheel={handleWheel}>
-            <NavBar />
+            {/*<NavBar />*/}
             <Background pullAmount={pullAmount} maxPull={maxPull} />
             <div className={styles.textContainer}>
                 <p>Hi I&apos;m Kevin, a fourth year computer science student at the University of Toronto.</p>
