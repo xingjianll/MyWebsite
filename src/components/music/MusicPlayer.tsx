@@ -25,8 +25,8 @@ const MusicPlayer: React.FC = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
-        const initialX = window.innerWidth - 380;
-        const initialY = window.innerHeight - 100;
+        const initialX = 100;
+        const initialY = 400;
         setPosition({ x: initialX, y: initialY });
         setDisplay('flex');
     }, []);
@@ -162,15 +162,16 @@ const MusicPlayer: React.FC = () => {
                 </div>
 
                 <div className={styles.controls}>
-                    {!initialView && (
-                        <button
-                            className={`${styles.shuffleButton} ${isShuffled ? styles.activeShuffle : ''}`}
-                            onClick={playRandomSong}
-                        >
-                            🔀
-                        </button>
-                    )}
-
+                    <div className={styles.shuffleOpacity}>
+                        {!initialView && (
+                            <button
+                                className={`${styles.shuffleButton} ${isShuffled ? styles.activeShuffle : ''}`}
+                                onClick={playRandomSong}
+                            >
+                                🔀
+                            </button>
+                        )}
+                    </div>
                     <button
                         className={styles.playButton}
                         onClick={initialView ? handleInitialPlayClick : togglePlay}
