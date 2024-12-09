@@ -13,7 +13,7 @@ const MusicPlayer: React.FC = () => {
     const [display, setDisplay] = useState('none');
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isHovered, setIsHovered] = useState(true);
+    const [isHovered, setIsHovered] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isDragging, setIsDragging] = useState(false);
     const [isShuffled] = useState(false);

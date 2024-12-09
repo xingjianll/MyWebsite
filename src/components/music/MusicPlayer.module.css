@@ -3,7 +3,6 @@
 .musicPlayer {
     position: fixed;
     width: 300px;
-    height: 80px;
     border-radius: 16px;
     overflow: hidden;
     padding: 10px;
@@ -43,9 +42,11 @@
     color: gray;
 }
 
-.musicPlayer.hovered .playButton,
-.musicPlayer.hovered .shuffleButton {
-    border: 1px solid white;
+.musicPlayer.hovered .shuffleButton,
+.musicPlayer.hovered .playButton {
+    color: black;
+    border: black 1px solid;
+    background-color: white;
 }
 
 .startText {
@@ -72,29 +73,12 @@
     gap: 10px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 1.5s ease 0.5s;
+    transition: opacity 1.5s ease;
 }
 
 .musicPlayer:not(.initialView) .details {
     opacity: 1;
     pointer-events: auto;
-}
-
-.controls {
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-.shuffleButton {
-    opacity: 0;
-    transition: opacity 0.8s ease 0.8s;
-}
-
-.musicPlayer:not(.initialView) .shuffleButton {
-    opacity: 1;
 }
 
 .albumArt {
@@ -146,53 +130,43 @@
 .artistName {
     margin: 0;
     font-size: 12px;
-    color: white;
+    color: black;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     transition: color 0.3s ease;
 }
 
+.controls {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.musicPlayer:not(.initialView) .controls {
+    opacity: 1;
+}
+
+.shuffleButton,
 .playButton {
-    background: none;
     border: none;
-    color: #000;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
     cursor: pointer;
     font-size: 20px;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     text-align: center;
     padding: 0;
-    transition: color 0.3s, transform 0.3s;
+    transition: color 0.3s, background-color 0.3s, transform 0.3s;
 }
 
-.musicPlayer:not(.initialView) .playButton {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    mix-blend-mode: difference;
-}
-
-.shuffleButton {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    border: 0;
-    padding: 8px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px;
-    width: 40px;
-    height: 40px;
-    line-height: 18px;
-    text-align: center;
-    transition: transform 0.2s;
-    mix-blend-mode: difference;
-}
-
-.shuffleButton:hover {
+.shuffleButton:hover,
+.playButton:hover {
     transform: scale(1.1);
 }
