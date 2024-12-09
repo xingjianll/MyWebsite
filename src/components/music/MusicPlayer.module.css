@@ -167,11 +167,14 @@
     height: 40px;
     text-align: center;
     padding: 0;
-    transition: color 0.3s, background-color 0.3s, transform 0.3s;
+    transition: color 0.3s, background-color 0.3s, transform 0.5s ease-in-out;
 }
 
 .musicPlayer.initialView .playButton {
-    animation: bounce 1s ease-in-out infinite;
+}
+
+.musicPlayer.initialView .playButton:hover {
+    transform: translateX(6px);
 }
 
 @keyframes bounce {
