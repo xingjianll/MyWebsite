@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './MusicPlayer.module.css';
+import {useGlobalContext} from "@/app/context";
 
 const MusicPlayer: React.FC = () => {
     const songs = [
@@ -12,6 +13,7 @@ const MusicPlayer: React.FC = () => {
 
     const [display, setDisplay] = useState('none');
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
+    const { setStarted } = useGlobalContext();
     const [isPlaying, setIsPlaying] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -117,6 +119,7 @@ const MusicPlayer: React.FC = () => {
         setTimeout(() => {
             setInitialView(false);
         }, 800);
+        setStarted(true);
     };
 
     return (
@@ -141,7 +144,6 @@ const MusicPlayer: React.FC = () => {
         >
             <audio ref={audioRef} src={songs[currentSongIndex].src} />
 
-            {/* Absolutely positioned start text in center of player */}
             {initialView && <span className={styles.startText}>start</span>}
 
             <div className={styles.content}>

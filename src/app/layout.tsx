@@ -5,6 +5,7 @@ import {ColorSchemeScript, MantineProvider} from "@mantine/core";
 import '@mantine/core/styles.css';
 import MusicPlayer from "@/components/music/MusicPlayer";
 import React from "react";
+import {ContextProvider} from "@/app/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,8 +26,10 @@ export default function RootLayout({
           </head>
           <body className={inter.className}>
           <MantineProvider>
-              {children}
-              <MusicPlayer/>
+              <ContextProvider>
+                  {children}
+                  <MusicPlayer/>
+              </ContextProvider>
           </MantineProvider>
           </body>
       </html>

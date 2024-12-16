@@ -1,7 +1,6 @@
 'use client';
-
+import { useGlobalContext } from "@/app/context";
 import type { NextPage } from 'next';
-import NavBar from "@/components/navbar/NavBar";
 import Background from "@/components/background/Background";
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./home.module.css";
@@ -9,6 +8,7 @@ import styles from "./home.module.css";
 const Home: NextPage = () => {
     const mainRef = useRef<HTMLDivElement>(null);
     const [pullAmount, setPullAmount] = useState(0);
+    const { started } = useGlobalContext();
     const maxPull = 80;
 
     const handleWheel = (e: React.WheelEvent) => {
