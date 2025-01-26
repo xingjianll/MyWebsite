@@ -5,6 +5,7 @@ import Background from "@/components/background/Background";
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./home.module.css";
 import Typed from "@/components/typed/typed";
+// @ts-ignore
 import { GitHubCalendar } from "github-contribution-calendar";
 import ReactMarkdown from "react-markdown";
 
