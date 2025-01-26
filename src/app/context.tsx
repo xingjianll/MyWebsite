@@ -5,6 +5,8 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 interface ContextProps {
     started: boolean;
     setStarted: React.Dispatch<React.SetStateAction<boolean>>;
+    finished: boolean;
+    setFinished: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Context = createContext<ContextProps | null>(null);
@@ -19,9 +21,11 @@ export const useGlobalContext = () => {
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
     const [started, setStarted] = useState<boolean>(false);
+    const [finished, setFinished] = useState<boolean>(false);
+
 
     return (
-        <Context.Provider value={{ started, setStarted }}>
+        <Context.Provider value={{ started, setStarted, finished, setFinished }}>
             {children}
         </Context.Provider>
     );

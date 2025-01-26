@@ -27,7 +27,7 @@ const MusicPlayer: React.FC = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
-        const initialX = 100;
+        const initialX = 150;
         const initialY = 400;
         setPosition({ x: initialX, y: initialY });
         setDisplay('flex');

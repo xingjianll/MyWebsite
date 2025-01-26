@@ -1,6 +1,9 @@
 import { TypeAnimation } from 'react-type-animation';
+import {useGlobalContext} from "@/app/context";
 
 const Typed = () => {
+    const { setFinished } = useGlobalContext();
+
     return (
         <TypeAnimation
             sequence={[
@@ -11,7 +14,10 @@ const Typed = () => {
                 300,
                 'Hi I\'m Kevin, a fourth year CompSci student at University of Toronto, st.George campus. ',
                 200,
-                'Hi I\'m Kevin, a fourth year CompSci student at University of Toronto, st.George campus. I like AI and programming languages.'
+                'Hi I\'m Kevin, a fourth year CompSci student at University of Toronto, st.George campus. I like AI and programming languages.',
+                () => {
+                    setFinished(true);
+                }
             ]}
             wrapper="span"
             cursor={true}
