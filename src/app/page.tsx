@@ -103,7 +103,7 @@ const Home: NextPage = () => {
                     </div>
                     <div style={{fontStyle: 'italic', textAlign: 'right'}}>
                         <h3>
-                            "Talk is cheap, show me the code." - Linus Torvalds
+                            &quot;Talk is cheap, show me the code.&quot; - Linus Torvalds
                         </h3>
                     </div>
                 </div>
