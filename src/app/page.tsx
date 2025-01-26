@@ -5,22 +5,48 @@ import Background from "@/components/background/Background";
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./home.module.css";
 import Typed from "@/components/typed/typed";
+import { GitHubCalendar } from "github-contribution-calendar";
+import ReactMarkdown from "react-markdown";
 
 const Home: NextPage = () => {
     const mainRef = useRef<HTMLDivElement>(null);
     const [pullAmount, setPullAmount] = useState(0);
     const { started } = useGlobalContext();
     const maxPull = 80;
+    const [intro1, setIntro1] = useState<string>("");
+    const [intro2, setIntro2] = useState<string>("");
+
+    useEffect(() => {
+        fetch("intro1.md")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then((text) => setIntro1(text))
+            .catch((error) => {
+                console.error("Error fetching the text file:", error);
+            });
+        fetch("intro2.md")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then((text) => setIntro2(text))
+            .catch((error) => {
+                console.error("Error fetching the text file:", error);
+            });
+    }, []);
 
     const handleWheel = (e: React.WheelEvent) => {
         const container = mainRef.current;
         if (!container) return;
 
-        // If we haven't reached maxPull, prevent normal scrolling
         if (pullAmount < maxPull) {
             e.preventDefault();
-            // Increase pullAmount by the scroll delta, but clamp at maxPull
-            // deltaY is typically positive when scrolling down
             const newPull = Math.min(maxPull, pullAmount + e.deltaY);
             setPullAmount(newPull);
 
@@ -29,7 +55,6 @@ const Home: NextPage = () => {
                 container.style.overflowY = "auto";
             }
         } else {
-            // We've already pulled fully, let the container scroll normally
         }
     };
 
@@ -43,7 +68,6 @@ const Home: NextPage = () => {
 
     return (
         <main ref={mainRef} className={styles.mainContainer} onWheel={handleWheel}>
-            {/*<NavBar />*/}
             <Background pullAmount={pullAmount} maxPull={maxPull} />
             <div className={styles.textContainer}>
                 {started && <Typed></Typed>}
@@ -57,18 +81,32 @@ const Home: NextPage = () => {
                         transition: 'transform 0.3s ease'
                     }}
                 >
-                    <h2>More</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non mauris risus. Maecenas ac leo efficitur, congue erat a, lobortis purus. Nullam mattis augue nibh, eu imperdiet est accumsan a. Sed posuere velit lacus, non consectetur lorem ultricies quis. Nulla vitae mauris ac massa sollicitudin pulvinar. Integer a tempor dui, et aliquam nisl. Nulla aliquam, dui quis varius facilisis, ex diam eleifend erat, nec vulputate lacus quam dapibus est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam commodo scelerisque mi a aliquam. Mauris velit urna, fermentum sed leo quis, eleifend maximus nulla. Nam tempus nulla id ex iaculis, sed bibendum orci euismod. Mauris et nibh risus.
-
-                        Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris sit amet blandit sem. Cras sed purus consequat sem blandit venenatis. Quisque ut rhoncus neque, ut pulvinar leo. Nam fermentum ipsum eu nisl volutpat, in eleifend tellus fermentum. Sed non vehicula nisl. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed viverra placerat aliquam.
-
-                        Morbi consectetur lectus nec urna scelerisque, ut interdum libero luctus. Nulla sed rhoncus tellus, in aliquet nisl. Morbi viverra sem in tellus bibendum, eu dictum arcu mollis. Integer consectetur metus sed placerat dapibus. In ultrices, risus bibendum dapibus tincidunt, nunc augue lacinia velit, vel tincidunt purus elit nec nulla. Donec orci eros, placerat sed scelerisque a, vehicula eget dolor. Cras interdum risus quis bibendum cursus. Donec sodales et ligula et faucibus. Sed lobortis eros nisi, ac convallis metus porta ac. Vivamus porta mollis dolor eu eleifend. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam semper sodales pretium. Curabitur ut hendrerit diam. Suspendisse ac ullamcorper nisi. Nam quis dui viverra justo consectetur lacinia.
-
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer consectetur mattis augue eleifend elementum. Phasellus iaculis a est eu tempor. Aenean pretium gravida fermentum. Aliquam fermentum, ipsum id molestie rutrum, libero mi elementum ligula, id bibendum ipsum elit mollis dolor. Etiam sit amet massa nulla. Donec quam nulla, ultrices et dictum vel, vulputate nec ipsum.
-                    </p>
+                    <h1>More About Me</h1>
+                    <ReactMarkdown>{intro1}</ReactMarkdown>
+                    <ReactMarkdown>{intro2}</ReactMarkdown>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <GitHubCalendar
+                            username="xingjianll"
+                            token={process.env.GITHUB_TOKEN}
+                            year={2024}
+                            showLabels={true}
+                            fontSize={14}
+                            theme="Galaxy"
+                            showTotalContributions={false}
+                        />
+                    </div>
+                    <div style={{fontStyle: 'italic', textAlign: 'right'}}>
+                        <h3>
+                            "Talk is cheap, show me the code." - Linus Torvalds
+                        </h3>
+                    </div>
                 </div>
-
             </div>
         </main>
     );

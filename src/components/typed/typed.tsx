@@ -9,9 +9,9 @@ const Typed = () => {
                 100,
                 'Hi I\'m Kevin, a fourth year CompSci student',
                 300,
-                'Hi I\'m Kevin, a fourth year CompSci student at the University of Toronto st.George campus. ',
+                'Hi I\'m Kevin, a fourth year CompSci student at University of Toronto, st.George campus. ',
                 200,
-                'Hi I\'m Kevin, a fourth year CompSci student at the University of Toronto st.George campus. I like AI and programming languages.'
+                'Hi I\'m Kevin, a fourth year CompSci student at University of Toronto, st.George campus. I like AI and programming languages.'
             ]}
             wrapper="span"
             cursor={true}
