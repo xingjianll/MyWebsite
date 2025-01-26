@@ -23,7 +23,7 @@ const Background: React.FC<BackgroundProps> = ({ pullAmount, maxPull }) => {
 
     return (
         <div className={styles.container}>
-            <ParticlesComponent id={'hi'} opacity={0.3} z={2} b_opacity={0} amount={25}></ParticlesComponent>
+            <ParticlesComponent id={'hi'} opacity={0.3} z={2} b_opacity={0} amount={30}></ParticlesComponent>
             <div className={styles.background} style={containerStyle}>
                 <Image
                     src={inori1}

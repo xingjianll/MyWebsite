@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import Background from "@/components/background/Background";
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./home.module.css";
+import Typed from "@/components/typed/typed";
 
 const Home: NextPage = () => {
     const mainRef = useRef<HTMLDivElement>(null);
@@ -45,7 +46,7 @@ const Home: NextPage = () => {
             {/*<NavBar />*/}
             <Background pullAmount={pullAmount} maxPull={maxPull} />
             <div className={styles.textContainer}>
-                <p>Hi I&apos;m Kevin, a fourth year computer science student at the University of Toronto.</p>
+                {started && <Typed></Typed>}
             </div>
 
             <div className={styles.background2}>
