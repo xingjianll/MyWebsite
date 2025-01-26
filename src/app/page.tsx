@@ -5,9 +5,8 @@ import Background from "@/components/background/Background";
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./home.module.css";
 import Typed from "@/components/typed/typed";
-// @ts-ignore
-import { GitHubCalendar } from "github-contribution-calendar";
 import ReactMarkdown from "react-markdown";
+import GitHubCalendar from "react-github-calendar";
 
 const Home: NextPage = () => {
     const mainRef = useRef<HTMLDivElement>(null);
@@ -83,8 +82,6 @@ const Home: NextPage = () => {
                     }}
                 >
                     <h1>More About Me</h1>
-                    <ReactMarkdown>{intro1}</ReactMarkdown>
-                    <ReactMarkdown>{intro2}</ReactMarkdown>
                     <div
                         style={{
                             display: 'flex',
@@ -94,19 +91,12 @@ const Home: NextPage = () => {
                     >
                         <GitHubCalendar
                             username="xingjianll"
-                            token={process.env.GITHUB_TOKEN}
-                            year={2024}
-                            showLabels={true}
-                            fontSize={14}
-                            theme="Galaxy"
-                            showTotalContributions={false}
+                            hideTotalCount={false}
+                            colorScheme={'light'}
                         />
                     </div>
-                    <div style={{fontStyle: 'italic', textAlign: 'right'}}>
-                        <h3>
-                            &quot;Talk is cheap, show me the code.&quot; - Linus Torvalds
-                        </h3>
-                    </div>
+                    <ReactMarkdown>{intro1}</ReactMarkdown>
+                    <ReactMarkdown>{intro2}</ReactMarkdown>
                 </div>
             </div>
         </main>
