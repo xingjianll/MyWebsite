@@ -10,6 +10,7 @@ import GitHubCalendar from "react-github-calendar";
 import {Button} from "@mantine/core";
 import GridDistortion from "@/components/GridDistortion/GridDistortion";
 import inori1 from '../../public/inori_clear.png'
+import MagnetLines from "@/components/MagnetLines/MagnetLines";
 
 
 const Home: NextPage = () => {
@@ -111,6 +112,20 @@ const Home: NextPage = () => {
                     className={styles.newSection}
                 >
                     <h1>ABOUT ME</h1>
+                    <div className={styles.titleBox}>
+                        {Array.from({length: 100}).map((_, index) => (
+                            <MagnetLines
+                                rows={1}
+                                columns={1}
+                                containerSize="20px"
+                                lineColor="darkred"
+                                lineWidth="2px"
+                                lineHeight="20px"
+                                baseAngle={0}
+                                style={{margin: 0, padding: 0}}
+                            />
+                        ))}
+                    </div>
                     <div
                         style={{
                             display: 'flex',

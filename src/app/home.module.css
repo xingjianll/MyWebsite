@@ -77,12 +77,20 @@
     padding: 2px 64px 10%;
 }
 
+.titleBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: clip;
+}
+
 .newSection h1 {
     font-family: "Bodoni Moda", serif;
     font-optical-sizing: auto;
     font-weight: 900;
     font-style: normal;
     margin-top: 20px;
+    margin-bottom: 0;
     font-size: 4rem;
     z-index: 9;
 }
