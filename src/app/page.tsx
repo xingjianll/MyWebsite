@@ -86,7 +86,7 @@ const Home: NextPage = () => {
 
     return (
         <main ref={mainRef} className={styles.mainContainer} onWheel={handleWheel}>
-            <Background pullAmount={pullAmount} maxPull={maxPull}/>
+            <Background/>
             <div className={styles.textContainer}>
                 {started && <Typed></Typed>}
                 {finished &&
@@ -102,10 +102,10 @@ const Home: NextPage = () => {
                     className={styles.newSection}
                     style={{
                         transform: `translateY(-${pullAmount}px)`,
-                        transition: 'transform 0.3s ease'
+                        // transition: 'transform 0.3s ease'
                     }}
                 >
-                    <h1>More About Me</h1>
+                    <h1>ABOUT ME</h1>
                     <div
                         style={{
                             display: 'flex',
