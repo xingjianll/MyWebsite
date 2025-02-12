@@ -65,11 +65,7 @@
 }
 
 .newSection {
-    background-color: rgba(10, 10, 10, 1);
     color: white;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow:  0 0 10px rgba(0, 0, 0, 0.1);
     padding: 2px 64px;
     margin-top: 0;
     margin-bottom: 0;
@@ -78,6 +74,11 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    background: rgba(10, 10, 10, 0) linear-gradient(
+            to top,
+            rgba(10, 10, 10, 1) 98%,
+            rgba(0, 0, 0, 0) 100%
+    );
 }
 
 .newSection h1 {
