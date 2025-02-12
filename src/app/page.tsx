@@ -8,6 +8,9 @@ import Typed from "@/components/typed/typed";
 import ReactMarkdown from "react-markdown";
 import GitHubCalendar from "react-github-calendar";
 import {Button} from "@mantine/core";
+import GridDistortion from "@/components/GridDistortion/GridDistortion";
+import inori1 from '../../public/inori_clear.png'
+
 
 const Home: NextPage = () => {
     const mainRef = useRef<HTMLDivElement>(null);
@@ -112,7 +115,8 @@ const Home: NextPage = () => {
                         style={{
                             display: 'flex',
                             flexDirection: 'column',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            margin: '6rem',
                         }}
                     >
                         <GitHubCalendar
@@ -121,7 +125,19 @@ const Home: NextPage = () => {
                             colorScheme={'light'}
                         />
                     </div>
+
                     <ReactMarkdown>{intro1}</ReactMarkdown>
+
+                    <div style={{width: '100%', height: '500px', padding: '6rem', alignSelf: 'center'}}>
+                        <GridDistortion
+                            imageSrc='inori2.png'
+                            grid={10}
+                            mouse={0.1}
+                            strength={0.15}
+                            relaxation={0.9}
+                            className="custom-class"
+                        />
+                    </div>
                     <ReactMarkdown>{intro2}</ReactMarkdown>
                 </div>
             </div>
