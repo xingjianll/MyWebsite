@@ -144,7 +144,7 @@ const MusicPlayer: React.FC = () => {
         >
             <audio ref={audioRef} src={songs[currentSongIndex].src} />
 
-            {initialView && <span className={styles.startText}>start</span>}
+            {initialView && <span className={styles.startText}>START</span>}
 
             <div className={styles.content}>
                 <div className={styles.details}>
