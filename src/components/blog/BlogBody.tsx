@@ -2,12 +2,19 @@
 
 import React from "react"
 import {MathpixLoader, MathpixMarkdown} from "mathpix-markdown-it";
+import GridDistortion from "@/components/GridDistortion/GridDistortion";
 
 export default class BlogBody extends React.Component {
     render() {
-        return <MathpixLoader>
-                    <MathpixMarkdown text="\\(ax^2 + bx + c = 0\\)"/>
-                    <MathpixMarkdown text="$x = \frac { - b \pm \sqrt { b ^ { 2 } - 4 a c } } { 2 a }$"/>
-                </MathpixLoader>
+        return <div style={{width: '100%', height: '600px', position: 'relative'}}>
+            <GridDistortion
+                imageSrc="https://picsum.photos/1920/1080?grayscale"
+                grid={10}
+                mouse={0.1}
+                strength={0.15}
+                relaxation={0.9}
+                className="custom-class"
+            />
+        </div>
     }
 }

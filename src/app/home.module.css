@@ -7,6 +7,10 @@
 }
 
 .textContainer {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
     position: absolute;
     font-size: 2ch;
     top: 25vh;
@@ -62,7 +66,6 @@
 
 .newSection {
     color: white;
-    padding: 2px 64px;
     margin-top: 0;
     margin-bottom: 0;
     width: 100%;
@@ -71,12 +74,25 @@
     flex-direction: column;
     gap: 16px;
     background: rgba(10, 10, 10, 1);
+    padding: 2px 64px 10%;
 }
 
 .newSection h1 {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
     margin-top: 20px;
     font-size: 4rem;
     z-index: 9;
+}
+
+.newSection h2 {
+    margin-bottom: 0;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-size: 2rem;
 }
 
 .newSection p {
