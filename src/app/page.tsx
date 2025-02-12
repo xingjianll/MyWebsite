@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     const mainRef = useRef<HTMLDivElement>(null);
     const [pullAmount, setPullAmount] = useState(0);
     const { started, finished } = useGlobalContext();
-    const maxPull = 150;
+    const MAXPULL = 1000;
     const [intro1, setIntro1] = useState<string>("");
     const [intro2, setIntro2] = useState<string>("");
 
@@ -46,9 +46,9 @@ const Home: NextPage = () => {
         const container = mainRef.current;
         if (!container) return;
 
-        if (pullAmount < maxPull) {
+        if (pullAmount < MAXPULL) {
             if (finished) {
-                const newPull = Math.min(maxPull, pullAmount + e.deltaY);
+                const newPull = Math.max(Math.min(MAXPULL, pullAmount + e.deltaY), 0);
                 setPullAmount(newPull);
             }
         } else {
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
             if (finished) {
                 for (let i = 0; i < 100; i++) {
                     setPullAmount(i);
-                    await timeout(1);
+                    await timeout(2);
                 }
                 const container = mainRef.current;
                 if (!container) return;
@@ -97,13 +97,15 @@ const Home: NextPage = () => {
                 }
             </div>
 
-            <div className={styles.background2}>
+            <div
+                className={styles.background2}
+                style={{
+                    marginTop: `${100-(pullAmount/10)}vh`,
+                    // transition: 'transform 0.3s ease'
+                }}
+            >
                 <div
                     className={styles.newSection}
-                    style={{
-                        transform: `translateY(-${pullAmount}px)`,
-                        // transition: 'transform 0.3s ease'
-                    }}
                 >
                     <h1>ABOUT ME</h1>
                     <div

@@ -1,6 +1,7 @@
 .musicPlayer {
     background-color: rgba(220, 220, 220, 0.5);
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     position: fixed;
     width: 300px;
     border-radius: 16px;
@@ -28,7 +29,6 @@
 
 .musicPlayer:not(.initialView) {
     border-radius: 16px;
-    -webkit-backdrop-filter: blur(4px);
     border: none;
 }
 
