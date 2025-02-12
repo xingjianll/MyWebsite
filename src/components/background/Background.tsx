@@ -11,7 +11,7 @@ import ParticlesComponent from "@/components/Particles";
 const Background: React.FC = () => {
     return (
         <div className={styles.container}>
-            <ParticlesComponent id={'hi'} opacity={0.3} z={2} b_opacity={0} amount={30}></ParticlesComponent>
+            <ParticlesComponent id={'hi'} opacity={0.3} z={2} b_opacity={0} amount={40}></ParticlesComponent>
             <div className={styles.background}>
                 <Image
                     src={inori1}
