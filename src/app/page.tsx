@@ -115,6 +115,7 @@ const Home: NextPage = () => {
                     <div className={styles.titleBox}>
                         {Array.from({length: 100}).map((_, index) => (
                             <MagnetLines
+                                key={index}
                                 rows={1}
                                 columns={1}
                                 containerSize="20px"
