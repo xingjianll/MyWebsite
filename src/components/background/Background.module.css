@@ -6,6 +6,7 @@
     height: 100%;
     display: flex;
     overflow: hidden;
+    background-color: rgba(253, 253, 253, 1);
 }
 
 #particles {
