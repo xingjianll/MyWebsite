@@ -90,7 +90,7 @@ const Home: NextPage = () => {
 
     return (
         <main ref={mainRef} className={styles.mainContainer} onWheel={handleWheel}>
-            <Background/>
+            <Background blur={Math.max(pullAmount-100, 0)}/>
             <div className={styles.textContainer}>
                 {started && <Typed></Typed>}
                 {finished &&
