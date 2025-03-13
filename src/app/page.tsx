@@ -112,21 +112,21 @@ const Home: NextPage = () => {
                     className={styles.newSection}
                 >
                     <h1>ABOUT ME</h1>
-                    <div className={styles.titleBox}>
-                        {Array.from({length: 100}).map((_, index) => (
-                            <MagnetLines
-                                key={index}
-                                rows={1}
-                                columns={1}
-                                containerSize="20px"
-                                lineColor="darkred"
-                                lineWidth="2px"
-                                lineHeight="20px"
-                                baseAngle={0}
-                                style={{margin: 0, padding: 0}}
-                            />
-                        ))}
-                    </div>
+                    {/*<div className={styles.titleBox}>*/}
+                    {/*    {Array.from({length: 100}).map((_, index) => (*/}
+                    {/*        <MagnetLines*/}
+                    {/*            key={index}*/}
+                    {/*            rows={1}*/}
+                    {/*            columns={1}*/}
+                    {/*            containerSize="20px"*/}
+                    {/*            lineColor="darkred"*/}
+                    {/*            lineWidth="2px"*/}
+                    {/*            lineHeight="20px"*/}
+                    {/*            baseAngle={0}*/}
+                    {/*            style={{margin: 0, padding: 0}}*/}
+                    {/*        />*/}
+                    {/*    ))}*/}
+                    {/*</div>*/}
                     <div
                         style={{
                             display: 'flex',
